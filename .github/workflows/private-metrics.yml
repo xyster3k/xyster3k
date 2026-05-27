@@ -4,6 +4,13 @@ on:
   schedule:
     - cron: "17 3 * * *"
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/private-metrics.yml"
+      - "scripts/generate_private_metrics.py"
+      - "README.md"
 
 permissions:
   contents: write
