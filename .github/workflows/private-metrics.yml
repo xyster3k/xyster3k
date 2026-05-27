@@ -10,7 +10,6 @@ on:
     paths:
       - ".github/workflows/private-metrics.yml"
       - "scripts/generate_private_metrics.py"
-      - "README.md"
 
 permissions:
   contents: write

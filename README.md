@@ -65,7 +65,7 @@ Do not judge the medical portfolio by the public repository list alone. It is th
 
 <div align="center">
 
-![Private GitHub work counted only as totals for xyster3k](https://raw.githubusercontent.com/xyster3k/xyster3k/main/assets/private-metrics.svg)
+![Private GitHub work counted only as totals for xyster3k](https://raw.githubusercontent.com/xyster3k/xyster3k/main/assets/private-metrics.svg?v=20260527-commit-search)
 
 </div>
 
