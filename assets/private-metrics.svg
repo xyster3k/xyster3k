@@ -1,12 +1,12 @@
 <svg width="648" height="278" viewBox="0 0 648 278" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="648" height="278" rx="10" fill="#ffffff" stroke="#d0d7de" />
 <text x="24" y="36" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="18" font-weight="700" fill="#24292f">Private GitHub work</text>
-<text x="24" y="60" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="13" font-weight="400" fill="#57606a">Totals from the last 365 days; names and messages are not published</text>
+<text x="24" y="60" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="13" font-weight="400" fill="#57606a">Aggregate counts from the last 365 days; private details are not published</text>
 <rect x="24" y="84" width="132" height="72" rx="8" fill="#f6f8fa" stroke="#d0d7de" />
-<text x="38" y="112" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="22" font-weight="700" fill="#24292f">222</text>
-<text x="38" y="138" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="400" fill="#57606a">Commits</text>
+<text x="38" y="112" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="22" font-weight="700" fill="#24292f">3,556</text>
+<text x="38" y="138" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="400" fill="#57606a">Authored commits</text>
 <rect x="180" y="84" width="132" height="72" rx="8" fill="#f6f8fa" stroke="#d0d7de" />
-<text x="194" y="112" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="22" font-weight="700" fill="#24292f">23</text>
+<text x="194" y="112" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="22" font-weight="700" fill="#24292f">55</text>
 <text x="194" y="138" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12" font-weight="400" fill="#57606a">Pull requests</text>
 <rect x="336" y="84" width="132" height="72" rx="8" fill="#f6f8fa" stroke="#d0d7de" />
 <text x="350" y="112" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="22" font-weight="700" fill="#24292f">44</text>
