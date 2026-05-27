@@ -315,15 +315,15 @@ def render_svg(metrics: dict) -> str:
     totals = metrics["totals"]
     setup_needed = metrics.get("setup_needed", False)
     setup_reason = metrics.get("setup_reason")
-    title = "Private GitHub activity" if not setup_needed else "Private metrics pending"
+    title = "Private GitHub work" if not setup_needed else "Private totals pending"
     if setup_reason == "token_or_api_error":
-        title = "Private metrics setup needs attention"
+        title = "Private totals need setup"
     subtitle = (
-        f"Anonymized aggregate activity, last {metrics['days']} days"
+        f"Totals from the last {metrics['days']} days; names and messages are not published"
         if not setup_needed
-        else "Check GH_METRICS_TOKEN permissions and rerun the workflow"
+        else "Check GH_METRICS_TOKEN permissions and run the workflow again"
         if setup_reason == "token_or_api_error"
-        else "Add GH_METRICS_TOKEN as a repository secret to enable private aggregates"
+        else "Add GH_METRICS_TOKEN so private repositories can be counted"
     )
 
     languages = metrics.get("top_languages") or []

@@ -2,37 +2,37 @@
 
 **MD, PhD · Endocrinologist · Healthcare manager · Biomedical software builder**
 
-I build practical biomedical information systems: clinical content pipelines, evidence monitoring tools, medical publishing platforms, AI-assisted workflows, and web applications for healthcare and life sciences.
+I work at the intersection of medicine, publishing, and software. My main area is applied medical information systems: evidence monitoring, editorial pipelines, clinical calculators, medical websites, and automation for healthcare projects.
 
-Most of my production and client work is private. This profile shows public tools, experiments, architecture work, and aggregated development activity without exposing private code.
+Medicine has a lot of repetitive work: searching sources, checking facts, preparing publications, monitoring updates, collecting feedback, and keeping processes under control. Software is useful when it removes this routine and gives doctors, editors, managers, and researchers a normal working tool instead of another fragile spreadsheet.
 
 ## What I Work On
 
-- AI-assisted medical publishing and evidence validation
-- Biomedical news and literature monitoring pipelines
-- Clinical calculators, decision-support interfaces, and medical web apps
-- Automation systems for research, content, healthcare, and operations
-- Next.js, TypeScript, Python, and PostgreSQL systems for applied biomedical workflows
+- Medical publishing systems: content planning, editorial workflow, SEO, multilingual websites
+- Evidence monitoring: literature and news tracking, source collection, update signals
+- Clinical tools: calculators, decision-support interfaces, structured medical forms
+- Quality control and operations: feedback, assessments, reporting, process monitoring
+- AI and automation where they are useful: extraction, draft support, validation, long-document processing
 
 ## Public Repository Surface
 
-The public repositories here are mostly supporting tools, forks, service programs, and development infrastructure I use while building other projects. They should not be read as my primary biomedical portfolio.
+Most of the real work is in closed repositories. Here I keep supporting tools, forks, service scripts, experiments, and parts of the infrastructure that can be public.
 
-My main work is in private repositories: biomedical software, medical publishing systems, evidence workflows, automation, and AI-assisted clinical information tools. This profile exposes the public edge of that work and anonymized aggregate activity, not client code or production systems.
+Do not judge the medical portfolio by the public repository list alone. It is the visible edge: the main work is medical software, publishing systems, evidence workflows, automation, and clinical information tools.
 
 ## GitHub Activity
 
-![Anonymized aggregate private GitHub activity for xyster3k](https://raw.githubusercontent.com/xyster3k/xyster3k/main/assets/private-metrics.svg)
+![Private GitHub work counted only as totals for xyster3k](https://raw.githubusercontent.com/xyster3k/xyster3k/main/assets/private-metrics.svg)
 
-Many repositories are private. The aggregate card is generated from a private GitHub token and publishes only safe totals: no private repository names, URLs, branch names, commit messages, or client/project names. Public repository language counts do not fully reflect production work, private biomedical projects, client systems, or internal experiments.
+Many repositories are private. The card is generated from a private GitHub token, but publishes only totals: repository counts, commits, pull requests, broad language groups, and broad system groups. It does not publish private repository names, URLs, branch names, commit messages, or project names.
 
 ## Domains
 
 **Medicine:** endocrinology, metabolic disease, clinical reasoning, medical education, evidence-based content
 
-**Software:** Next.js, TypeScript, Python, PostgreSQL, APIs, automation, AI-assisted development
+**Software:** Next.js, TypeScript, Python, PostgreSQL, APIs, automation, medical web systems
 
-**AI workflows:** content pipelines, validation systems, research extraction, LLM orchestration
+**AI tools:** extraction, draft support, validation workflows, routing long documents through models
 
 **Publishing:** medical content platforms, SEO, multilingual websites, structured editorial systems
 

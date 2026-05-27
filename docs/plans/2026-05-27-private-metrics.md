@@ -16,7 +16,7 @@ Publish safe aggregate development metrics on the GitHub profile without exposin
    - broad system-category tags derived from repository metadata, aggregated only as category counts
 3. Generate `assets/private-metrics.json` and `assets/private-metrics.svg`.
 4. Add a GitHub Action that runs daily and commits only those generated files.
-5. Update the profile README to show the SVG and document that it is anonymized aggregate activity.
+5. Update the profile README to show the SVG and explain that only totals are published.
 
 ## Privacy Rules
 
