@@ -22,7 +22,7 @@ METRICS_SVG = ASSETS / "private-metrics.svg"
 USER = os.getenv("GH_METRICS_USER", "xyster3k")
 TOKEN = os.getenv("GH_METRICS_TOKEN") or os.getenv("GITHUB_TOKEN")
 DAYS = int(os.getenv("GH_METRICS_DAYS", "365"))
-MAX_LANGUAGE_REPOS = int(os.getenv("GH_METRICS_MAX_LANGUAGE_REPOS", "120"))
+MAX_LANGUAGE_REPOS = int(os.getenv("GH_METRICS_MAX_LANGUAGE_REPOS", "25"))
 API = "https://api.github.com"
 
 CATEGORY_KEYWORDS = {

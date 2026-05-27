@@ -4,7 +4,7 @@
   "generated_at": null,
   "privacy": "No repository names, URLs, commit messages, branches, or client names are published.",
   "setup_needed": true,
-  "setup_reason": "token_or_api_error",
+  "setup_reason": "missing_token",
   "top_languages": [],
   "totals": {
     "accessible_repositories": 0,
