@@ -174,11 +174,16 @@ def count_paged(path: str, params: dict[str, str]) -> int:
     return len(data)
 
 
-def search_count(query: str) -> int:
-    data, _ = request_json("/search/issues", {"q": query, "per_page": "1"})
+def search_total(path: str, query: str) -> tuple[int, bool]:
+    data, _ = request_json(path, {"q": query, "per_page": "1"})
     if isinstance(data, dict):
-        return int(data.get("total_count", 0))
-    return 0
+        return int(data.get("total_count", 0)), bool(data.get("incomplete_results", False))
+    return 0, False
+
+
+def search_count(path: str, query: str) -> int:
+    total, _ = search_total(path, query)
+    return total
 
 
 def classify(repo: dict) -> set[str]:
@@ -231,8 +236,12 @@ def placeholder_metrics(reason: str = "missing_token") -> dict:
             "pull_requests": 0,
             "restricted_contributions": 0,
         },
-    "top_languages": [],
-    "categories": {},
+        "metric_sources": {
+            "commits": "not_collected",
+            "pull_requests": "not_collected",
+        },
+        "top_languages": [],
+        "categories": {},
     }
 
 
@@ -245,6 +254,10 @@ def collect_metrics() -> dict:
     since_iso = since.isoformat().replace("+00:00", "Z")
     until_iso = now.isoformat().replace("+00:00", "Z")
     contribution_totals = contribution_counts(since_iso, until_iso)
+    metric_sources = {
+        "commit_graph_contributions": contribution_totals["commits"],
+        "restricted_contributions": contribution_totals["restricted_contributions"],
+    }
 
     repos = paged(
         "/user/repos",
@@ -284,6 +297,24 @@ def collect_metrics() -> dict:
             for language, byte_count in languages.items():
                 language_bytes[language] = language_bytes.get(language, 0) + int(byte_count)
 
+    commit_query = f"author:{USER} author-date:>={since.date().isoformat()}"
+    try:
+        commit_count, commit_search_incomplete = search_total("/search/commits", commit_query)
+        metric_sources["commits"] = "commit_search_author_date"
+        metric_sources["commit_search_incomplete"] = commit_search_incomplete
+    except Exception:
+        commit_count = contribution_totals["commits"]
+        metric_sources["commits"] = "contribution_graph_fallback"
+        metric_sources["commit_search_incomplete"] = True
+
+    pr_query = f"type:pr author:{USER} created:>={since.date().isoformat()}"
+    try:
+        pr_count = search_count("/search/issues", pr_query)
+        metric_sources["pull_requests"] = "issue_search_author_created"
+    except Exception:
+        pr_count = contribution_totals["pull_requests"]
+        metric_sources["pull_requests"] = "contribution_graph_fallback"
+
     return {
         "generated_at": now.isoformat().replace("+00:00", "Z"),
         "user": USER,
@@ -295,10 +326,11 @@ def collect_metrics() -> dict:
             "public_repositories": sum(1 for repo in visible_repos if not repo.get("private")),
             "private_repositories": sum(1 for repo in visible_repos if repo.get("private")),
             "active_repositories": len(active_repos),
-            "commits": contribution_totals["commits"],
-            "pull_requests": contribution_totals["pull_requests"],
+            "commits": commit_count,
+            "pull_requests": pr_count,
             "restricted_contributions": contribution_totals["restricted_contributions"],
         },
+        "metric_sources": metric_sources,
         "top_languages": top_languages(language_bytes),
         "categories": {key: value for key, value in category_counts.items() if value},
     }
@@ -319,7 +351,7 @@ def render_svg(metrics: dict) -> str:
     if setup_reason == "token_or_api_error":
         title = "Private totals need setup"
     subtitle = (
-        f"Totals from the last {metrics['days']} days; names and messages are not published"
+        f"Aggregate counts from the last {metrics['days']} days; private details are not published"
         if not setup_needed
         else "Check GH_METRICS_TOKEN permissions and run the workflow again"
         if setup_reason == "token_or_api_error"
@@ -335,7 +367,7 @@ def render_svg(metrics: dict) -> str:
     ]
 
     cards = [
-        ("Commits", format_number(totals["commits"])),
+        ("Authored commits", format_number(totals["commits"])),
         ("Pull requests", format_number(totals["pull_requests"])),
         ("Active repos", format_number(totals["active_repositories"])),
         ("Private repos", format_number(totals["private_repositories"])),
