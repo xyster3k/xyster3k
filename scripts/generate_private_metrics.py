@@ -22,6 +22,7 @@ METRICS_SVG = ASSETS / "private-metrics.svg"
 USER = os.getenv("GH_METRICS_USER", "xyster3k")
 TOKEN = os.getenv("GH_METRICS_TOKEN") or os.getenv("GITHUB_TOKEN")
 DAYS = int(os.getenv("GH_METRICS_DAYS", "365"))
+MAX_LANGUAGE_REPOS = int(os.getenv("GH_METRICS_MAX_LANGUAGE_REPOS", "120"))
 API = "https://api.github.com"
 
 CATEGORY_KEYWORDS = {
@@ -98,6 +99,47 @@ def request_json(path: str, params: dict[str, str] | None = None) -> tuple[objec
     except urllib.error.HTTPError as exc:
         body = exc.read().decode("utf-8", errors="replace")
         raise RuntimeError(f"GitHub API error {exc.code} for {path}: {body}") from exc
+
+
+def request_graphql(query: str, variables: dict[str, str]) -> dict:
+    req = urllib.request.Request(f"{API}/graphql", method="POST")
+    req.add_header("Accept", "application/vnd.github+json")
+    req.add_header("Content-Type", "application/json")
+    if TOKEN:
+        req.add_header("Authorization", f"Bearer {TOKEN}")
+    payload = json.dumps({"query": query, "variables": variables}).encode("utf-8")
+
+    try:
+        with urllib.request.urlopen(req, data=payload, timeout=30) as response:
+            data = json.loads(response.read().decode("utf-8"))
+            if data.get("errors"):
+                raise RuntimeError("GitHub GraphQL returned errors")
+            return data["data"]
+    except urllib.error.HTTPError as exc:
+        raise RuntimeError(f"GitHub GraphQL error {exc.code}") from exc
+
+
+def contribution_counts(since_iso: str, until_iso: str) -> dict[str, int]:
+    data = request_graphql(
+        """
+        query($login: String!, $from: DateTime!, $to: DateTime!) {
+          user(login: $login) {
+            contributionsCollection(from: $from, to: $to) {
+              totalCommitContributions
+              totalPullRequestContributions
+              restrictedContributionsCount
+            }
+          }
+        }
+        """,
+        {"login": USER, "from": since_iso, "to": until_iso},
+    )
+    collection = data["user"]["contributionsCollection"]
+    return {
+        "commits": int(collection["totalCommitContributions"]),
+        "pull_requests": int(collection["totalPullRequestContributions"]),
+        "restricted_contributions": int(collection["restrictedContributionsCount"]),
+    }
 
 
 def paged(path: str, params: dict[str, str] | None = None) -> list[dict]:
@@ -187,9 +229,10 @@ def placeholder_metrics(reason: str = "missing_token") -> dict:
             "active_repositories": 0,
             "commits": 0,
             "pull_requests": 0,
+            "restricted_contributions": 0,
         },
-        "top_languages": [],
-        "categories": {},
+    "top_languages": [],
+    "categories": {},
     }
 
 
@@ -200,6 +243,8 @@ def collect_metrics() -> dict:
     now = dt.datetime.now(dt.UTC).replace(microsecond=0)
     since = now - dt.timedelta(days=DAYS)
     since_iso = since.isoformat().replace("+00:00", "Z")
+    until_iso = now.isoformat().replace("+00:00", "Z")
+    contribution_totals = contribution_counts(since_iso, until_iso)
 
     repos = paged(
         "/user/repos",
@@ -220,7 +265,6 @@ def collect_metrics() -> dict:
 
     language_bytes: dict[str, int] = {}
     category_counts = {category: 0 for category in CATEGORY_KEYWORDS}
-    commit_count = 0
 
     for repo in visible_repos:
         full_name = repo.get("full_name")
@@ -230,22 +274,15 @@ def collect_metrics() -> dict:
         for category in classify(repo):
             category_counts[category] += 1
 
+    for repo in active_repos[:MAX_LANGUAGE_REPOS]:
+        full_name = repo.get("full_name")
+        if not full_name:
+            continue
+
         languages, _ = request_json(f"/repos/{full_name}/languages")
         if isinstance(languages, dict):
             for language, byte_count in languages.items():
                 language_bytes[language] = language_bytes.get(language, 0) + int(byte_count)
-
-        if repo in active_repos:
-            commit_count += count_paged(
-                f"/repos/{full_name}/commits",
-                {
-                    "author": USER,
-                    "since": since_iso,
-                },
-            )
-
-    pr_query = f"type:pr author:{USER} created:>={since.date().isoformat()}"
-    pr_count = search_count(pr_query)
 
     return {
         "generated_at": now.isoformat().replace("+00:00", "Z"),
@@ -258,8 +295,9 @@ def collect_metrics() -> dict:
             "public_repositories": sum(1 for repo in visible_repos if not repo.get("private")),
             "private_repositories": sum(1 for repo in visible_repos if repo.get("private")),
             "active_repositories": len(active_repos),
-            "commits": commit_count,
-            "pull_requests": pr_count,
+            "commits": contribution_totals["commits"],
+            "pull_requests": contribution_totals["pull_requests"],
+            "restricted_contributions": contribution_totals["restricted_contributions"],
         },
         "top_languages": top_languages(language_bytes),
         "categories": {key: value for key, value in category_counts.items() if value},
