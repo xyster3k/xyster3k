@@ -1,19 +1,54 @@
 {
-  "categories": {},
+  "categories": {
+    "AI": 8,
+    "automation": 5,
+    "data": 1,
+    "publishing": 1
+  },
   "days": 365,
-  "generated_at": null,
+  "generated_at": "2026-05-27T00:50:42Z",
   "privacy": "No repository names, URLs, commit messages, branches, or client names are published.",
-  "setup_needed": true,
-  "setup_reason": "missing_token",
-  "top_languages": [],
+  "setup_needed": false,
+  "top_languages": [
+    {
+      "bytes": 53761406,
+      "name": "TypeScript",
+      "percent": 63.7
+    },
+    {
+      "bytes": 20552708,
+      "name": "JavaScript",
+      "percent": 24.4
+    },
+    {
+      "bytes": 3410227,
+      "name": "HTML",
+      "percent": 4.0
+    },
+    {
+      "bytes": 3088565,
+      "name": "Swift",
+      "percent": 3.7
+    },
+    {
+      "bytes": 1313143,
+      "name": "Python",
+      "percent": 1.6
+    },
+    {
+      "bytes": 594628,
+      "name": "Shell",
+      "percent": 0.7
+    }
+  ],
   "totals": {
-    "accessible_repositories": 0,
-    "active_repositories": 0,
-    "commits": 0,
-    "private_repositories": 0,
-    "public_repositories": 0,
-    "pull_requests": 0,
-    "restricted_contributions": 0
+    "accessible_repositories": 53,
+    "active_repositories": 44,
+    "commits": 221,
+    "private_repositories": 45,
+    "public_repositories": 8,
+    "pull_requests": 23,
+    "restricted_contributions": 3847
   },
   "user": "xyster3k"
 }
