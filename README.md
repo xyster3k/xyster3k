@@ -14,13 +14,11 @@ Most of my production and client work is private. This profile shows public tool
 - Automation systems for research, content, healthcare, and operations
 - Next.js, TypeScript, Python, and PostgreSQL systems for applied biomedical workflows
 
-## Public Work
+## Public Repository Surface
 
-- [endocurrent](https://github.com/xyster3k/endocurrent) - medical publishing and content platform work with authentication, CMS, SEO, and compliance-oriented architecture
-- [openclaw](https://github.com/xyster3k/openclaw) - personal AI assistant and automation platform experiments
-- [paperclip](https://github.com/xyster3k/paperclip) - orchestration experiments for autonomous company workflows
-- [FluxAPI](https://github.com/xyster3k/FluxAPI) / [FluxAPIWebClient](https://github.com/xyster3k/FluxAPIWebClient) - image generation and API tooling experiments
-- [claude-task-master](https://github.com/xyster3k/claude-task-master) / [claudecodeui](https://github.com/xyster3k/claudecodeui) - AI-assisted task management and development workflow tooling
+The public repositories here are mostly supporting tools, forks, service programs, and development infrastructure I use while building other projects. They should not be read as my primary biomedical portfolio.
+
+My main work is in private repositories: biomedical software, medical publishing systems, evidence workflows, automation, and AI-assisted clinical information tools. This profile exposes the public edge of that work and anonymized aggregate activity, not client code or production systems.
 
 ## GitHub Activity
 
