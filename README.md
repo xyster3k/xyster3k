@@ -25,11 +25,15 @@ Most of my production and client work is private. This profile shows public tool
 ## GitHub Activity
 
 <p>
+  <img width="648" alt="Anonymized aggregate private GitHub activity for xyster3k" src="./assets/private-metrics.svg" />
+</p>
+
+<p>
   <img height="165" alt="GitHub activity for xyster3k" src="https://github-readme-stats.vercel.app/api?username=xyster3k&show_icons=true&hide_rank=true&include_all_commits=true&custom_title=GitHub%20activity" />
   <img height="165" alt="Top public repository languages for xyster3k" src="https://github-readme-stats.vercel.app/api/top-langs/?username=xyster3k&layout=compact&langs_count=8" />
 </p>
 
-Many repositories are private. Public cards do not fully reflect production work, private biomedical projects, client systems, or internal experiments. Top languages are based on public repository code volume, not a complete skill map.
+Many repositories are private. The aggregate card is generated from a private GitHub token and publishes only safe totals: no private repository names, URLs, branch names, commit messages, or client/project names. Public cards do not fully reflect production work, private biomedical projects, client systems, or internal experiments. Top languages are based on repository code volume, not a complete skill map.
 
 ## Domains
 

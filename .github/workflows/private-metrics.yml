@@ -1,0 +1,35 @@
+name: Private metrics
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@v4
+
+      - name: Generate anonymized metrics
+        env:
+          GH_METRICS_TOKEN: ${{ secrets.GH_METRICS_TOKEN }}
+          GH_METRICS_USER: xyster3k
+          GH_METRICS_DAYS: "365"
+        run: python3 scripts/generate_private_metrics.py
+
+      - name: Commit generated metrics
+        run: |
+          if git diff --quiet -- assets/private-metrics.json assets/private-metrics.svg; then
+            echo "No metrics changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/private-metrics.json assets/private-metrics.svg
+          git commit -m "Update anonymized private metrics"
+          git push

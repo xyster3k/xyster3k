@@ -1,0 +1,17 @@
+{
+  "categories": {},
+  "days": 365,
+  "generated_at": null,
+  "privacy": "No repository names, URLs, commit messages, branches, or client names are published.",
+  "setup_needed": true,
+  "top_languages": [],
+  "totals": {
+    "accessible_repositories": 0,
+    "active_repositories": 0,
+    "commits": 0,
+    "private_repositories": 0,
+    "public_repositories": 0,
+    "pull_requests": 0
+  },
+  "user": "xyster3k"
+}
