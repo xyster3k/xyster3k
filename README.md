@@ -1,35 +1,45 @@
-# Yuriy Poteshkin
+<h1 align="left">Yuriy Poteshkin</h1>
 
-MD, PhD. Endocrinologist, healthcare manager, and AI-assisted biomedical software builder.
+**MD, PhD · Endocrinologist · Healthcare manager · Biomedical software builder**
 
-I work at the intersection of clinical medicine, biomedical information systems, and practical AI tooling. My strongest area is turning medical knowledge into structured software: decision support, clinical content systems, research workflows, data pipelines, and internal tools that help clinicians move faster without losing scientific rigor.
+I build practical biomedical information systems: clinical content pipelines, evidence monitoring tools, medical publishing platforms, AI-assisted workflows, and web applications for healthcare and life sciences.
 
-## What I build
+Most of my production and client work is private. This profile shows public tools, experiments, architecture work, and aggregated development activity without exposing private code.
 
-- Biomedical and healthcare software with clinician-grade information architecture
-- AI-assisted workflows for literature review, content production, and knowledge extraction
-- Clinical publishing platforms, medical education tools, and patient-facing health products
-- Automation around APIs, data ingestion, structured prompts, and reproducible analysis
-- Full-stack prototypes where the medical model, data model, and user workflow all need to fit together
+## What I Work On
 
-## Current public signal
+- AI-assisted medical publishing and evidence validation
+- Biomedical news and literature monitoring pipelines
+- Clinical calculators, decision-support interfaces, and medical web apps
+- Automation systems for research, content, healthcare, and operations
+- Next.js, TypeScript, Python, and PostgreSQL systems for applied biomedical workflows
 
-Most of my serious applied work is private, but GitHub can still show aggregate contribution activity when private contributions are enabled in profile settings. The public repositories here are a partial surface, not the full body of work.
+## Public Work
+
+- [endocurrent](https://github.com/xyster3k/endocurrent) - medical publishing and content platform work with authentication, CMS, SEO, and compliance-oriented architecture
+- [openclaw](https://github.com/xyster3k/openclaw) - personal AI assistant and automation platform experiments
+- [paperclip](https://github.com/xyster3k/paperclip) - orchestration experiments for autonomous company workflows
+- [FluxAPI](https://github.com/xyster3k/FluxAPI) / [FluxAPIWebClient](https://github.com/xyster3k/FluxAPIWebClient) - image generation and API tooling experiments
+- [claude-task-master](https://github.com/xyster3k/claude-task-master) / [claudecodeui](https://github.com/xyster3k/claudecodeui) - AI-assisted task management and development workflow tooling
+
+## GitHub Activity
 
 <p>
-  <img height="165" alt="GitHub stats for xyster3k" src="https://github-readme-stats.vercel.app/api?username=xyster3k&show_icons=true&hide_title=true&rank_icon=github" />
-  <img height="165" alt="Top public languages for xyster3k" src="https://github-readme-stats.vercel.app/api/top-langs/?username=xyster3k&layout=compact&langs_count=8" />
+  <img height="165" alt="GitHub activity for xyster3k" src="https://github-readme-stats.vercel.app/api?username=xyster3k&show_icons=true&hide_rank=true&include_all_commits=true&custom_title=GitHub%20activity" />
+  <img height="165" alt="Top public repository languages for xyster3k" src="https://github-readme-stats.vercel.app/api/top-langs/?username=xyster3k&layout=compact&langs_count=8" />
 </p>
 
-## Public projects
+Many repositories are private. Public cards do not fully reflect production work, private biomedical projects, client systems, or internal experiments. Top languages are based on public repository code volume, not a complete skill map.
 
-- [endocurrent](https://github.com/xyster3k/endocurrent) - content publishing platform for medical/news-style workflows
-- [FluxAPI](https://github.com/xyster3k/FluxAPI) and [FluxAPIWebClient](https://github.com/xyster3k/FluxAPIWebClient) - API and web client experiments
-- AI tooling forks and experiments around agentic development, task management, and local coding workflows
+## Domains
 
-## Clinical and technical focus
+**Medicine:** endocrinology, metabolic disease, clinical reasoning, medical education, evidence-based content
 
-Endocrinology, obesity and metabolic disease, evidence synthesis, biomedical writing, clinical decision support, healthcare operations, AI-assisted programming, Next.js, TypeScript, Python, PostgreSQL, automation, and LLM-based workflows.
+**Software:** Next.js, TypeScript, Python, PostgreSQL, APIs, automation, AI-assisted development
+
+**AI workflows:** content pipelines, validation systems, research extraction, LLM orchestration
+
+**Publishing:** medical content platforms, SEO, multilingual websites, structured editorial systems
 
 ## Links
 
