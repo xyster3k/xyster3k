@@ -172,12 +172,13 @@ def top_languages(language_bytes: dict[str, int], limit: int = 6) -> list[dict[s
     ]
 
 
-def placeholder_metrics() -> dict:
+def placeholder_metrics(reason: str = "missing_token") -> dict:
     return {
         "generated_at": None,
         "user": USER,
         "days": DAYS,
         "setup_needed": True,
+        "setup_reason": reason,
         "privacy": "No repository names, URLs, commit messages, branches, or client names are published.",
         "totals": {
             "accessible_repositories": 0,
@@ -275,10 +276,15 @@ def svg_text(x: int, y: int, text: str, size: int = 14, weight: str = "400", fil
 def render_svg(metrics: dict) -> str:
     totals = metrics["totals"]
     setup_needed = metrics.get("setup_needed", False)
+    setup_reason = metrics.get("setup_reason")
     title = "Private GitHub activity" if not setup_needed else "Private metrics pending"
+    if setup_reason == "token_or_api_error":
+        title = "Private metrics setup needs attention"
     subtitle = (
         f"Anonymized aggregate activity, last {metrics['days']} days"
         if not setup_needed
+        else "Check GH_METRICS_TOKEN permissions and rerun the workflow"
+        if setup_reason == "token_or_api_error"
         else "Add GH_METRICS_TOKEN as a repository secret to enable private aggregates"
     )
 
@@ -331,7 +337,11 @@ def render_svg(metrics: dict) -> str:
 
 def main() -> int:
     ASSETS.mkdir(parents=True, exist_ok=True)
-    metrics = collect_metrics()
+    try:
+        metrics = collect_metrics()
+    except Exception:
+        print("Metrics collection failed; wrote a safe setup placeholder. Check GH_METRICS_TOKEN permissions.")
+        metrics = placeholder_metrics("token_or_api_error")
     METRICS_JSON.write_text(json.dumps(metrics, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     METRICS_SVG.write_text(render_svg(metrics), encoding="utf-8")
     print(f"Wrote {METRICS_JSON.relative_to(ROOT)}")
