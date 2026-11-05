@@ -1,0 +1,55 @@
+name: Profile metrics
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/private-metrics.yml"
+      - "scripts/generate_private_metrics.py"
+      - "scripts/validate_public_metrics.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-metrics
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Generate aggregate metrics
+        env:
+          GH_METRICS_TOKEN: ${{ secrets.GH_METRICS_TOKEN }}
+          GH_METRICS_USER: ${{ github.repository_owner }}
+          GH_METRICS_DAYS: "365"
+          GH_METRICS_MAX_LANGUAGE_REPOS: "25"
+        run: python3 scripts/generate_private_metrics.py
+
+      - name: Validate public assets
+        run: python3 scripts/validate_public_metrics.py assets/private-metrics.json assets/private-metrics.svg
+
+      - name: Commit generated metrics
+        run: |
+          git add assets/private-metrics.json assets/private-metrics.svg
+          if git diff --cached --quiet; then
+            echo "No metrics changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update anonymized private metrics"
+          git push

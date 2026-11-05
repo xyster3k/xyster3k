@@ -1,0 +1,4 @@
+interface:
+  display_name: "Страница GitHub с учётом приватных проектов"
+  short_description: "Профиль GitHub с обновляемой статистикой проектов"
+  default_prompt: "Используй $github-profile-metrics, чтобы создать страницу профиля GitHub с обновлением статистики публичных и приватных репозиториев."
