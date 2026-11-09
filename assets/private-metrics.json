@@ -6,56 +6,56 @@
     "publishing": 1
   },
   "days": 365,
-  "generated_at": "2026-11-08T10:18:12Z",
+  "generated_at": "2026-11-09T11:28:17Z",
   "metric_sources": {
     "commit_graph_contributions": 178,
     "commit_search_incomplete": false,
     "commits": "commit_search_author_date",
     "pull_requests": "issue_search_author_created",
-    "restricted_contributions": 9769
+    "restricted_contributions": 9801
   },
   "privacy": "No repository names, URLs, commit messages, branches, or client names are published.",
   "setup_needed": false,
   "top_languages": [
     {
-      "bytes": 53912554,
+      "bytes": 53189946,
       "name": "TypeScript",
-      "percent": 67.3
+      "percent": 68.5
     },
     {
-      "bytes": 13561403,
+      "bytes": 11613671,
       "name": "JavaScript",
-      "percent": 16.9
+      "percent": 15.0
     },
     {
-      "bytes": 3948908,
+      "bytes": 4220401,
       "name": "Python",
-      "percent": 4.9
+      "percent": 5.4
     },
     {
-      "bytes": 3555045,
+      "bytes": 3503829,
       "name": "HTML",
-      "percent": 4.4
+      "percent": 4.5
     },
     {
       "bytes": 3307785,
       "name": "PLpgSQL",
-      "percent": 4.1
+      "percent": 4.3
     },
     {
-      "bytes": 933606,
+      "bytes": 906401,
       "name": "CSS",
       "percent": 1.2
     }
   ],
   "totals": {
-    "accessible_repositories": 74,
-    "active_repositories": 65,
-    "commits": 9521,
-    "private_repositories": 65,
-    "public_repositories": 9,
+    "accessible_repositories": 76,
+    "active_repositories": 67,
+    "commits": 9548,
+    "private_repositories": 66,
+    "public_repositories": 10,
     "pull_requests": 55,
-    "restricted_contributions": 9769
+    "restricted_contributions": 9801
   },
   "user": "xyster3k"
 }
