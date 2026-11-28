@@ -6,29 +6,29 @@
     "publishing": 1
   },
   "days": 365,
-  "generated_at": "2026-11-27T12:14:32Z",
+  "generated_at": "2026-11-28T11:42:09Z",
   "metric_sources": {
     "commit_graph_contributions": 192,
     "commit_search_incomplete": false,
     "commits": "commit_search_author_date",
     "pull_requests": "issue_search_author_created",
-    "restricted_contributions": 10557
+    "restricted_contributions": 10636
   },
   "privacy": "No repository names, URLs, commit messages, branches, or client names are published.",
   "setup_needed": false,
   "top_languages": [
     {
-      "bytes": 51282847,
+      "bytes": 51437363,
       "name": "TypeScript",
-      "percent": 62.8
+      "percent": 62.1
     },
     {
-      "bytes": 12059538,
+      "bytes": 12094312,
       "name": "JavaScript",
-      "percent": 14.8
+      "percent": 14.6
     },
     {
-      "bytes": 4180162,
+      "bytes": 4195597,
       "name": "Python",
       "percent": 5.1
     },
@@ -38,24 +38,24 @@
       "percent": 4.6
     },
     {
-      "bytes": 3253371,
-      "name": "PLpgSQL",
-      "percent": 4.0
+      "bytes": 3462996,
+      "name": "Go",
+      "percent": 4.2
     },
     {
-      "bytes": 3101857,
-      "name": "Go",
-      "percent": 3.8
+      "bytes": 3253371,
+      "name": "PLpgSQL",
+      "percent": 3.9
     }
   ],
   "totals": {
     "accessible_repositories": 78,
     "active_repositories": 69,
-    "commits": 10326,
+    "commits": 10405,
     "private_repositories": 68,
     "public_repositories": 10,
     "pull_requests": 56,
-    "restricted_contributions": 10557
+    "restricted_contributions": 10636
   },
   "user": "xyster3k"
 }
